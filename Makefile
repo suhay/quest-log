@@ -13,5 +13,5 @@ clean:
 gqlgen:
 	$(GORUN) github.com/99designs/gqlgen -v
 
-generate:
-	go generate .
+dev:
+	CompileDaemon -directory=. -color=true -command="./quest-log"

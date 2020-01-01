@@ -1,3 +1,0 @@
-#!/bin/bash
-
-CompileDaemon -directory=. -color=true -command="./quest-log"
