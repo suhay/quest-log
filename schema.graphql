@@ -1,0 +1,207 @@
+schema {
+  query: Query
+}
+
+type Entry {
+  name: String!
+  plot: Hook
+  climax: Hook
+  goal: Hook
+  tags: [Tag]
+  closing: String
+  perspective: Perspective
+}
+
+type Thread {
+  name: String!
+  plot: Hook
+  climax: Hook
+  goal: Hook
+  tags: [Tag]
+  perspective: Perspective
+}
+
+type Hook {
+  hook: String
+  trigger: String
+  closing: String
+  required: [Requirement]
+  tags: [Tag]
+  event: String
+}
+
+type Requirement {
+  key: String
+  value: String
+  or: [Requirement]
+  # gt, gte, lt, lte
+}
+
+type Query {
+  thread: Thread!
+  entry: Entry!
+}
+
+enum Tag {
+  tutorial
+  abuseOfPower
+  arrogance
+  art
+  autonomy
+  beatingTheOdds
+  beauty
+  beliefs
+  betrayal
+  bible
+  bravery
+  celebration
+  chance
+  change
+  chaosAndOrder
+  children
+  circleOfLife
+  comingOfAge
+  commonSense
+  conservation
+  conspiracy
+  creation
+  crime
+  courage
+  darknessAndLightness
+  death
+  dedication
+  democracy
+  desireToEscape
+  despair
+  diplomacy
+  disillusionment
+  economics
+  effectsFromThePast
+  empowerment
+  everlastingLove
+  evilsByHumanity
+  facingReality
+  failure
+  family
+  fate
+  fear
+  feminism
+  freedom
+  friendship
+  future
+  lgbt
+  god
+  goodVsEvil
+  government
+  greed
+  growingUp
+  happiness
+  hate
+  heresy
+  heritage
+  hero
+  heroism
+  hope
+  humor
+  humanNature
+  identity
+  ideology
+  ignorance
+  illusionOfPower
+  individuality
+  innerPeace
+  innocence
+  isolation
+  jealousy
+  justice
+  kindness
+  knowledge
+  law
+  leadership
+  liberty
+  life
+  logic
+  losingHope
+  lossOfInnocence
+  lostLove
+  loveAndSacrifice
+  loyalty
+  manVsNature
+  manVsMan
+  manVsSelf
+  manVsMachine
+  mankind
+  maturity
+  medicine
+  mercy
+  morality
+  nationalism
+  nature
+  necessity
+  neglect
+  normality
+  opportunity
+  optimism
+  overcoming
+  passion
+  patience
+  patriotism
+  peace
+  perfection
+  peerPressure
+  perseverance
+  powerAndCorruption
+  prejudice
+  pride
+  progress
+  purpose
+  quests
+  race
+  reality
+  redemption
+  regret
+  religion
+  resistance
+  reunion
+  revolution
+  revenge
+  sanity
+  secrecy
+  segregation
+  selfAwareness
+  selfDiscipline
+  simplicity
+  society
+  socialConstruct
+  solitude
+  soul
+  suicide
+  survival
+  technology
+  temptation
+  time
+  tolerance
+  travel
+  trust
+  truth
+  universe
+  unselfishness
+  valor
+  vices
+  violence
+  virtue
+  war
+  waste
+  wealth
+  wisdom
+  willpower
+  winningAndLosing
+  xenophobia
+  youth
+}
+
+enum Perspective {
+  one
+  two
+  three
+}
