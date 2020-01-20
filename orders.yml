@@ -1,0 +1,5 @@
+---
+get: # order name
+  runtime: go1_13 # shop to run in
+  path: quest-log # path where function lives
+  env: [] # any variables to include

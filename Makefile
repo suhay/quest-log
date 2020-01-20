@@ -1,10 +1,10 @@
 GOCMD=go
-GOINSTALL=$(GOCMD) install
+GOINSTALL=$(GOCMD) build
 GOCLEAN=$(GOCMD) clean
 GORUN=$(GOCMD) run
 
 install: 
-	$(GOINSTALL) $(shell pwd)/quest-logp.go
+	$(GOINSTALL) ${GOPATH}/src/github.com/suhay/quest-log
 
 clean: 
 	$(GOCLEAN)
