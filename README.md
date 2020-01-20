@@ -63,11 +63,11 @@ MONGODB_THREAD_COLLECTION=thread
   "name": "Low Power",
   "hooks": [
     {
-      "hook": "->torti.Low Power", # continue decorator
+      "hook": "->torti.Low Power", // continue decorator
       "required" : [
-        "{Power 2}", # required expression. this and all siblings must evaluate to true
+        "{Power 2}", // required expression. this and all siblings must evaluate to true
         {
-          "or": [ # an operator based requirement collection. 'or' signifies that at least one child must be true
+          "or": [ // an operator based requirement collection. 'or' signifies that at least one child must be true
             "{newStabilizer true}",
             "{newShield true}"
           ]
@@ -75,8 +75,8 @@ MONGODB_THREAD_COLLECTION=thread
       ]
     },
     {
-      "hook": ["good-vs-evil"], # an array signifies a dynamic pivot to a matching thread or hook
-      "trigger": "{bossFight true}" # when the 'bossFight' flag evaluates to true, all sibling hooks are skipped and this one becomes active
+      "hook": ["good-vs-evil"], // an array signifies a dynamic pivot to a matching thread or hook
+      "trigger": "{bossFight true}" // when the 'bossFight' flag evaluates to true, all sibling hooks are skipped and this one becomes active
     },
     {
       "hook": "That'll do, thanks!"
