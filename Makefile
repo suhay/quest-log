@@ -15,3 +15,6 @@ gqlgen:
 
 dev:
 	CompileDaemon -directory=. -color=true -command="./quest-log"
+
+test:
+	go test github.com/suhay/quest-log/tests

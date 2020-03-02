@@ -11,6 +11,7 @@ Modular, serverless game engine utilizing Sandwich Shop.
 - [Entry](#entry)
 - [Text Decorators](#text-decorators)
 - [Dialog Trees](#dialog-trees)
+  - [Reserved Keys](#reserved-keys)
 - [State](#state)
   - [Flags and Pins](#flags-and-pins)
   - [Game](#game)
@@ -42,6 +43,7 @@ JWT_SECRET=your-jwt-secret
 MONGODB_GAME_DB=my-game-mongodb
 MONGODB_ENTRY_COLLECTION=entry
 MONGODB_THREAD_COLLECTION=thread
+MONGODB_DIALOG_COLLECTION=dialog
 ```
 
 | Key | Description |
@@ -55,6 +57,7 @@ MONGODB_THREAD_COLLECTION=thread
 | `MONGODB_GAME_DB` | Game database name. |
 | `MONGODB_ENTRY_COLLECTION` | Collection name of `entries` types within the Game database. |
 | `MONGODB_THREAD_COLLECTION` | Collection name of `thread` types within the Game database. |
+| `MONGODB_DIALOG_COLLECTION` | Collection name of `dialog` types within the Game database. |
 
 ## Thread
 
@@ -63,11 +66,11 @@ MONGODB_THREAD_COLLECTION=thread
   "name": "Low Power",
   "hooks": [
     {
-      "hook": "->torti.Low Power", // continue decorator
+      "hook": "->torti.Low Power",
       "required" : [
-        "{Power 2}", // required expression. this and all siblings must evaluate to true
+        "{power 2}",
         {
-          "or": [ // an operator based requirement collection. 'or' signifies that at least one child must be true
+          "or": [
             "{newStabilizer true}",
             "{newShield true}"
           ]
@@ -75,8 +78,8 @@ MONGODB_THREAD_COLLECTION=thread
       ]
     },
     {
-      "hook": ["good-vs-evil"], // an array signifies a dynamic pivot to a matching thread or hook
-      "trigger": "{bossFight true}" // when the 'bossFight' flag evaluates to true, all sibling hooks are skipped and this one becomes active
+      "hook": ["good-vs-evil"],
+      "trigger": "{bossFight true}"
     },
     {
       "hook": "That'll do, thanks!"
@@ -131,6 +134,7 @@ An `entry` is a super-set of a `thread` with the below differences. An entry sho
 | `{expression value}`, `{exp < 5}` | **Expression** - An evaluated variable plus the `value` it must compare to. Logical operators may be used such as `=`, `<`, or `<=`. If no operator is provided, `=` is assumed. |
 | `+flag` | **Flag** - Temporary, named `var` which is removed from `state` after the first time it is broadcast back to Quest Log. These should be transient game states that are read once and then forgotten such as completing a certain task, collecting an item, making a decision, or visiting a certain place. |
 | `++pin` | **Pin** - Semi-permanent, named `var`. Like `flags`, but should hold more permanent state data such as the death of a character, the acquisition of certain knowledge such as who the killer is, how much mana a character has, or a change to the world that will affect future threads and entries. These should rarely be deleted. |
+| `key*` | **Randomize** - When a key name is immediately proceeded by an asterisks `*`, when the key is transitioned to it will randomly select a member of the array. | 
 
 ## Dialog Trees
 
@@ -176,7 +180,15 @@ Low Power: |
 END: It was nice getting to know you! # END signifies the terminating key in a dialog tree
 ```
 
-Dialog is stored in `yaml` files for ease of writing. Everything will be stored as `json` one it gets up to MongoDB. Each speaking character should have their own dialog set and all text decorators are valid. Text can be `continued` to from a `hook` by using `fileName.key`.
+Dialog is stored in `yaml` files for ease of writing. Everything will be stored as `json` once it gets up to MongoDB. Each speaking character should have their own dialog set and all text decorators are valid. Text can be `continued` to from a `hook` by using `fileName.key`.
+
+### Reserved Keys
+
+| Key | Description |
+|:--- | :---- |
+| `INTRO` | When a dialog tree is called without a `->dialog.SPECIFIC_KEY` provided, this will be where the parsing engine will begin. |
+| `END` | This should be used as an escape route of of a dialog tree. |
+| `*` | All dialog found within this key will be used as random filler text. It has no inherent parent or flow. |
 
 ## State
 

@@ -4,9 +4,7 @@ schema {
 
 type Entry {
   name: String!
-  plot: Hook
-  climax: Hook
-  goal: Hook
+  hooks: [Hook]
   tags: [Tag]
   closing: String
   perspective: Perspective
@@ -14,9 +12,7 @@ type Entry {
 
 type Thread {
   name: String!
-  plot: Hook
-  climax: Hook
-  goal: Hook
+  hooks: [Hook]
   tags: [Tag]
   perspective: Perspective
 }
@@ -38,8 +34,10 @@ type Requirement {
 }
 
 type Query {
-  thread: Thread!
   entry: Entry!
+  
+  thread: Thread!
+  GetThread(name: String!): Thread!
 }
 
 enum Tag {
