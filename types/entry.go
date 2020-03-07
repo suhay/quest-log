@@ -2,7 +2,8 @@ package types
 
 // EntryResolver resolves any Entry objects
 type EntryResolver struct {
-	Entry *Entry
+	Entry   *Entry
+	Entries []Entry
 }
 
 // Entry is a collection of related thread hooks

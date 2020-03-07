@@ -1,10 +1,13 @@
 package tests
 
 import (
+	"flag"
 	"testing"
 
 	quest "github.com/suhay/quest-log/query"
 )
+
+var flagPath = flag.String("path", "", "Path to local threads.")
 
 func TestThread(t *testing.T) {
 	var params = quest.Params{
@@ -16,10 +19,11 @@ func TestThread(t *testing.T) {
 	}
 
 	if len(resp.Errors) > 0 {
-		t.Errorf("Response had errors")
+		t.Log(resp.Errors)
+		t.Error("Response had errors")
 	} else {
 		if results.Thread.Name == "" {
-			t.Errorf("Response was blank")
+			t.Error("Response was blank")
 		}
 	}
 }
@@ -35,10 +39,10 @@ func TestGetThread(t *testing.T) {
 	}
 
 	if len(resp.Errors) > 0 {
-		t.Errorf("Response had errors")
+		t.Error("Response had errors")
 	} else {
 		if results.GetThread.Name != "Power Low" {
-			t.Errorf("Response name was incorrect")
+			t.Error("Response name was incorrect")
 		}
 	}
 }

@@ -2,7 +2,8 @@ package types
 
 // ThreadResolver resolves any Thread objects
 type ThreadResolver struct {
-	Thread *Thread
+	Thread  *Thread
+	Threads []Thread
 }
 
 // Thread is a collection of related thread hooks
