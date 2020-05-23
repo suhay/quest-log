@@ -31,7 +31,7 @@ func (r *ThreadResolver) Hooks() *[]*HookResolver {
 	return &resolvers
 }
 
-// Tags are used to relate one thread to another
+// Tags relate entries together and also are used for find child threads to include
 func (r *ThreadResolver) Tags() *[]*string {
 	return &r.Thread.Tags
 }

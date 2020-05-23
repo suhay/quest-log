@@ -27,17 +27,29 @@
       "showLog": true
     },
     {
-      "name": "Test",
+      "name": "Test Resolvers",
       "type": "go",
       "request": "launch",
       "mode": "test",
       "remotePath": "",
       "port": 2345,
       "host": "127.0.0.1",
-      "program": "${workspaceRoot}/tests/quest-log_test.go",
-      "env": {},
+      "program": "${workspaceRoot}/tests/resolver_test.go",
+      "env": {
+        "LOCAL_PATH": "fixtures"
+      },
       "args": [],
       "showLog": true
-    }       
+    },
+    {
+      "name": "Launch test package",
+      "type": "go",
+      "request": "launch",
+      "mode": "test",
+      "program": "${workspaceFolder}",
+      "env": {
+        "LOCAL_PATH": "fixtures"
+      }
+    }   
   ]
 }

@@ -1,0 +1,25 @@
+{
+  "name": "You spin me right round",
+  "hooks": [
+    {
+      "event": "{tutorialSpin}",
+      "hook": "Well that was inconvenient. I guess we could either catch a stabilizer, or a shield. They will probably need more power, whichever you decide to grab.",
+      "required": [
+        {
+          "or": [
+            { "value": "{newStabilizer true}" },
+            { "value": "{newShield true}" }
+          ]
+        }
+      ]
+    },
+    {
+      "hook": "I'm going to go throw up now... Remind me to later, I am currently missing a vomitus module. If you can find one, though.",
+      "event": "{tutorialEndSpin}"
+    }
+  ],
+  "perspective": "two",
+  "tags": [
+    "shield"
+  ]
+}

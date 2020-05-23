@@ -13,3 +13,4 @@
 
 quest-log
 .env
+*.db

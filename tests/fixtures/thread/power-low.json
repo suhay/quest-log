@@ -1,0 +1,20 @@
+{
+  "name": "Power Low",
+  "hooks": [
+    {
+      "hook": "->torti.Low Power",
+      "required": [
+        { "value": "{Power 2}" }
+      ]
+    },
+    {
+      "tags": ["good-vs-evil"],
+      "trigger": "{bossFight true}"
+    },
+    {
+      "hook": "That'll do, thanks!"
+    }
+  ],
+  "perspective": "two",
+  "tags": ["tutorial"]
+}

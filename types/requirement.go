@@ -7,14 +7,8 @@ type RequirementResolver struct {
 
 // Requirement is something that must be resolved by the hook before it is considered finished
 type Requirement struct {
-	Key   string
 	Value string
 	Or    []Requirement
-}
-
-// Key is variable name to evaluate
-func (r *RequirementResolver) Key() *string {
-	return &r.Requirement.Key
 }
 
 // Value is the exact value the evaluated variable must equal

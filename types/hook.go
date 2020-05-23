@@ -7,12 +7,12 @@ type HookResolver struct {
 
 // Hook are the main parts of a Thread of Entry
 type Hook struct {
-	Hook        string
-	Trigger     string
-	Closing     string
-	Required    []Requirement
-	Tags        []*string
-	Event       string
+	Hook     string
+	Trigger  string
+	Closing  string
+	Required []Requirement
+	Tags     []*string
+	Event    string
 }
 
 // Hook returns the hook text

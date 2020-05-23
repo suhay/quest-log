@@ -17,4 +17,4 @@ dev:
 	CompileDaemon -directory=. -color=true -command="./quest-log"
 
 test:
-	go test github.com/suhay/quest-log/tests
+	LOCAL_PATH=fixtures go test -v github.com/suhay/quest-log/tests

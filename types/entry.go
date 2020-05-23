@@ -8,11 +8,8 @@ type EntryResolver struct {
 
 // Entry is a collection of related thread hooks
 type Entry struct {
-	Name        string
-	Hooks       []Hook
-	Tags        []*string
-	Closing     string
-	Perspective string
+	Thread
+	Closing string
 }
 
 // Name is the database name of this particular entry
@@ -37,7 +34,7 @@ func (r *EntryResolver) Closing() *string {
 	return &r.Entry.Closing
 }
 
-// Tags relate enteries together and also are used for find chil threads to include
+// Tags relate entries together and also are used for find child threads to include
 func (r *EntryResolver) Tags() *[]*string {
 	return &r.Entry.Tags
 }

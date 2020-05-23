@@ -1,0 +1,21 @@
+{ 
+  "name": "tutorial",
+  "hooks": [
+    {
+      "hook": "Oh, hello there. You saved me. Or maybe I saved you. I guess semantics don 't really matter, but either way we are here in this place... I detect that I am rambling, so feel free to detach me if I am no longer needed."
+    },
+    {
+      "tags": ["tutorial"]
+    },
+    {
+      "hook": "I guess that does it for me.",
+      "trigger": "{endTutorial}",
+      "required": [
+        { "value": "{questsComplete 4}" }
+      ]
+    }
+  ],
+  "tags": ["tutorial"],
+  "closing": "{closeTutorial}",
+  "perspective": "two"
+}
