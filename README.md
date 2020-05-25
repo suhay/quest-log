@@ -17,7 +17,6 @@ Modular, serverless game engine utilizing Sandwich Shop.
   - [Game](#game)
   - [Bias](#bias)
     - [Anti-Bias](#anti-bias)
-- [Development](#development)
 
 ## Usage
 
@@ -38,12 +37,11 @@ MONGODB_PORT=27017
 MONGODB_USERNAME=mongo
 MONGODB_PASSWORD=password1234
 MONGODB_QUEST_LOG_DB=quest-log
+MONGODB_GAME_DB=my-game-mongodb
+
 JWT_SECRET=your-jwt-secret
 
-MONGODB_GAME_DB=my-game-mongodb
-MONGODB_ENTRY_COLLECTION=entry
-MONGODB_THREAD_COLLECTION=thread
-MONGODB_DIALOG_COLLECTION=dialog
+DB_PATH=~/db/your-data.db
 ```
 
 | Key | Description |
@@ -53,11 +51,9 @@ MONGODB_DIALOG_COLLECTION=dialog
 | `MONGODB_USERNAME` | Username to log into db. |
 | `MONGODB_PASSWORD` | Password of the user. |
 | `MONGODB_QUEST_LOG_DB` | Quest Log MongoDB name (stores metadata, not game data). |
-| `JWT_SECRET` | Secret used by Sandwich Shop to validate request origination. |
 | `MONGODB_GAME_DB` | Game database name. |
-| `MONGODB_ENTRY_COLLECTION` | Collection name of `entries` types within the Game database. |
-| `MONGODB_THREAD_COLLECTION` | Collection name of `thread` types within the Game database. |
-| `MONGODB_DIALOG_COLLECTION` | Collection name of `dialog` types within the Game database. |
+| `JWT_SECRET` | Secret used by Sandwich Shop to validate request origination. |
+| `DB_PATH` | If a MongoDB connection is not provided, or wanted, Quest Log will use a local BoltDB. This is the path to that file. |
 
 ## Thread
 
@@ -223,9 +219,3 @@ When a bias is being enforced, there is a possibility that its subsequent anti-b
 
 - The provided tags will flip to become their opposites
 - The lesser biased tag will become the strongest and the strongest the weakest when selecting the next pivot.
-
-## Development
-
-- Thread and Entry level flavor descriptions, such as setting and perpetual antagonists.
-- Conditional logic in dialog trees.
-- Text suppression while selecting dialog replies (more narrative).
